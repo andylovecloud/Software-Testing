@@ -23,7 +23,7 @@ Library    SeleniumLibrary
 Library    String
 
 *** Variables ***
-${URL}    http://jimms.fi
+${URL}    https://shell.hamk.fi/~SampolaP1/wp/
 ${BROWSER}    Chrome
 
 *** Keywords ***
@@ -37,10 +37,10 @@ Open website
 # 1. Does all product categories have a "landing page" (MANDATORY)
 1. Check All Product Categories Have Landing Page
     Open website
-    @{categories}=    Get WebElements    xpath=//*[@id="sitemegamenu"]/nav/ul/li
+    @{categories}=    Get WebElements    xpath=//*[@id="primary-site-navigation-desktop"]/nav/ul/li
     ${length}=    Get Length    ${categories}
     FOR    ${i}    IN RANGE    1    ${length}+1
-        ${a}=    Get WebElement    xpath=//*[@id="sitemegamenu"]/nav/ul/li[${i}]/a
+        ${a}=    Get WebElement    xpath=//*[@id="ast-hf-menu-1"]/nav/ul/li[${i}]/a
         ${nav_text}=    Get Text    ${a}
         ${nav_text}=    Convert To Lower Case    ${nav_text}
         Click Element    ${a}
