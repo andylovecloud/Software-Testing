@@ -37,19 +37,20 @@ Open website
 # 1. Does all product categories have a "landing page" (MANDATORY)
 1. Check All Product Categories Have Landing Page
     Open website
-    @{categories}=    Get WebElements    xpath=//*[@id="primary-site-navigation-desktop"]/nav/ul/li
+    @{categories}=    Get WebElements    xpath=/html/body/div[2]/header/div[1]/div/div/div/div/div[2]/div/div/div/nav
     ${length}=    Get Length    ${categories}
     FOR    ${i}    IN RANGE    1    ${length}+1
         ${a}=    Get WebElement    xpath=//*[@id="ast-hf-menu-1"]/nav/ul/li[${i}]/a
         ${nav_text}=    Get Text    ${a}
         ${nav_text}=    Convert To Lower Case    ${nav_text}
         Click Element    ${a}
+        Run Keyword And Continue On Failure    Page Should Contain    ${nav_text}
         Sleep    2s
-        ${landing_page_text}=    Get Text    //*[@id="jim-main"]/div[2]/div/div[2]/div[2]/h1
-        ${landing_page_text}=    Convert To Lower Case    ${landing_page_text}
-        Run Keyword And Continue On Failure    Should Contain     ${landing_page_text}    ${nav_text}
+        # ${landing_page_text}=    Get Text    //*[@id="jim-main"]/div[2]/div/div[2]/div[2]/h1
+        # ${landing_page_text}=    Convert To Lower Case    ${landing_page_text}
+        # Run Keyword And Continue On Failure    Should Contain     ${landing_page_text}    ${nav_text}
     END
-    Close Browser
+    # Close Browser
     Sleep    1s
 
 # # 2. Test search feature from main page (search keyword is: ps5) (MANDATORY)

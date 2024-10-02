@@ -1,124 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.1 (Python 3.12.0 on darwin)" generated="2024-10-02T11:12:07.049349" rpa="false" schemaversion="5">
+<robot generator="Robot 7.1 (Python 3.12.0 on darwin)" generated="2024-10-02T11:27:53.361974" rpa="false" schemaversion="5">
 <suite id="s1" name="Sampola.fi" source="/Users/Andy_1/Library/CloudStorage/OneDrive-Hämeenammattikorkeakoulu/HAMK/2nd-Year/Customer-Project/Software-Testing/Software-Testing/Websites-testing/Sampola.fi.robot">
 <test id="s1-t1" name="1. Check All Product Categories Have Landing Page" line="38">
 <kw name="Open website">
-<kw name="Open Browser">
-<msg time="2024-10-02T11:12:07.113492" level="FAIL">No keyword with name 'Open Browser' found.</msg>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-10-02T11:27:53.538047" level="INFO">Opening browser 'Chrome' to base url 'https://shell.hamk.fi/~SampolaP1/wp/'.</msg>
 <arg>${URL}</arg>
-<arg>browser=${BROWSER}</arg>
+<arg>${BROWSER}</arg>
 <arg>options=add_argument("--disable-search-engine-choice-screen");add_experimental_option("detach", True)</arg>
-<status status="FAIL" start="2024-10-02T11:12:07.113190" elapsed="0.002775">No keyword with name 'Open Browser' found.</status>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-10-02T11:27:53.537678" elapsed="3.950722"/>
 </kw>
-<kw name="Maximize Browser Window">
-<status status="NOT RUN" start="2024-10-02T11:12:07.116463" elapsed="0.000220"/>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-10-02T11:27:57.490007" elapsed="0.338689"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
+<msg time="2024-10-02T11:27:59.830429" level="INFO">Slept 2 seconds.</msg>
 <arg>2s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" start="2024-10-02T11:12:07.116957" elapsed="0.000155"/>
+<status status="PASS" start="2024-10-02T11:27:57.829008" elapsed="2.002194"/>
 </kw>
-<status status="FAIL" start="2024-10-02T11:12:07.111306" elapsed="0.006104">No keyword with name 'Open Browser' found.</status>
+<status status="PASS" start="2024-10-02T11:27:53.536920" elapsed="6.294552"/>
 </kw>
-<kw name="Get WebElements">
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2024-10-02T11:27:59.844902" level="INFO">@{categories} = [ ]</msg>
 <var>@{categories}</var>
-<arg>xpath=//*[@id="primary-site-navigation-desktop"]/nav/ul/li</arg>
-<status status="NOT RUN" start="2024-10-02T11:12:07.118657" elapsed="0.000821"/>
+<arg>xpath=/html/body/div[2]/header/div[1]/div/div/div/div/div[2]/div/div/div/nav</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2024-10-02T11:27:59.831868" elapsed="0.013381"/>
 </kw>
 <kw name="Get Length" owner="BuiltIn">
+<msg time="2024-10-02T11:27:59.846747" level="INFO">Length is 0.</msg>
+<msg time="2024-10-02T11:27:59.846971" level="INFO">${length} = 0</msg>
 <var>${length}</var>
 <arg>${categories}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="NOT RUN" start="2024-10-02T11:12:07.120154" elapsed="0.000605"/>
+<status status="PASS" start="2024-10-02T11:27:59.846199" elapsed="0.000881"/>
 </kw>
 <for flavor="IN RANGE">
 <iter>
-<kw name="Get WebElement">
+<kw name="Get WebElement" owner="SeleniumLibrary">
 <var>${a}</var>
 <arg>xpath=//*[@id="ast-hf-menu-1"]/nav/ul/li[${i}]/a</arg>
-<status status="NOT RUN" start="2024-10-02T11:12:07.123596" elapsed="0.000226"/>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="NOT RUN" start="2024-10-02T11:27:59.848118" elapsed="0.000122"/>
 </kw>
-<kw name="Get Text">
+<kw name="Get Text" owner="SeleniumLibrary">
 <var>${nav_text}</var>
 <arg>${a}</arg>
-<status status="NOT RUN" start="2024-10-02T11:12:07.124553" elapsed="0.000226"/>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-10-02T11:27:59.848429" elapsed="0.000103"/>
 </kw>
 <kw name="Convert To Lower Case" owner="String">
 <var>${nav_text}</var>
 <arg>${nav_text}</arg>
 <doc>Converts string to lower case.</doc>
-<status status="NOT RUN" start="2024-10-02T11:12:07.125228" elapsed="0.000224"/>
+<status status="NOT RUN" start="2024-10-02T11:27:59.848684" elapsed="0.000107"/>
 </kw>
-<kw name="Click Element">
+<kw name="Click Element" owner="SeleniumLibrary">
 <arg>${a}</arg>
-<status status="NOT RUN" start="2024-10-02T11:12:07.125817" elapsed="0.000538"/>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-10-02T11:27:59.849356" elapsed="0.000262"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
+<arg>Page Should Contain</arg>
+<arg>${nav_text}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<status status="NOT RUN" start="2024-10-02T11:27:59.849945" elapsed="0.000168"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
 <arg>2s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" start="2024-10-02T11:12:07.126908" elapsed="0.000204"/>
-</kw>
-<kw name="Get Text">
-<var>${landing_page_text}</var>
-<arg>//*[@id="jim-main"]/div[2]/div/div[2]/div[2]/h1</arg>
-<status status="NOT RUN" start="2024-10-02T11:12:07.127445" elapsed="0.000196"/>
-</kw>
-<kw name="Convert To Lower Case" owner="String">
-<var>${landing_page_text}</var>
-<arg>${landing_page_text}</arg>
-<doc>Converts string to lower case.</doc>
-<status status="NOT RUN" start="2024-10-02T11:12:07.127927" elapsed="0.000176"/>
-</kw>
-<kw name="Run Keyword And Continue On Failure" owner="BuiltIn">
-<arg>Should Contain</arg>
-<arg>${landing_page_text}</arg>
-<arg>${nav_text}</arg>
-<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
-<status status="NOT RUN" start="2024-10-02T11:12:07.128383" elapsed="0.000188"/>
+<status status="NOT RUN" start="2024-10-02T11:27:59.850286" elapsed="0.000095"/>
 </kw>
 <var name="${i}"/>
-<status status="NOT RUN" start="2024-10-02T11:12:07.122437" elapsed="0.006472"/>
+<status status="NOT RUN" start="2024-10-02T11:27:59.847830" elapsed="0.002644"/>
 </iter>
 <var>${i}</var>
 <value>1</value>
 <value>${length}+1</value>
-<status status="NOT RUN" start="2024-10-02T11:12:07.121501" elapsed="0.007657"/>
+<status status="NOT RUN" start="2024-10-02T11:27:59.847390" elapsed="0.003196"/>
 </for>
-<kw name="Close Browser">
-<status status="NOT RUN" start="2024-10-02T11:12:07.129980" elapsed="0.000218"/>
-</kw>
 <kw name="Sleep" owner="BuiltIn">
+<msg time="2024-10-02T11:28:00.852102" level="INFO">Slept 1 second.</msg>
 <arg>1s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" start="2024-10-02T11:12:07.130732" elapsed="0.000194"/>
+<status status="PASS" start="2024-10-02T11:27:59.850959" elapsed="1.002137"/>
 </kw>
-<status status="FAIL" start="2024-10-02T11:12:07.110084" elapsed="0.021603">No keyword with name 'Open Browser' found.</status>
+<status status="PASS" start="2024-10-02T11:27:53.536160" elapsed="7.318330"/>
 </test>
-<status status="FAIL" start="2024-10-02T11:12:07.055172" elapsed="0.077937"/>
+<status status="PASS" start="2024-10-02T11:27:53.365984" elapsed="7.491211"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="Sampola.fi">Sampola.fi</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Sampola.fi">Sampola.fi</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2024-10-02T11:12:07.090764" level="ERROR">Error in file '/Users/Andy_1/Library/CloudStorage/OneDrive-Hämeenammattikorkeakoulu/HAMK/2nd-Year/Customer-Project/Software-Testing/Software-Testing/Websites-testing/Sampola.fi.robot' on line 22: Importing library 'SeleniumLibrary' failed: ModuleNotFoundError: No module named 'SeleniumLibrary'
-Traceback (most recent call last):
-  None
-PYTHONPATH:
-  /Users/Andy_1/.vscode/extensions/robocorp.robotframework-lsp-1.12.0/src/robotframework_debug_adapter
-  /Users/Andy_1/Library/CloudStorage/OneDrive-Hämeenammattikorkeakoulu/HAMK/2nd-Year/Customer-Project/Software-Testing/Software-Testing
-  /Users/Andy_1/.vscode/extensions/robocorp.robotframework-lsp-1.12.0/src
-  /Users/Andy_1/.vscode/extensions/robocorp.robotframework-lsp-1.12.0/src/robotframework_ls/vendored
-  /Library/Frameworks/Python.framework/Versions/3.12/lib/python312.zip
-  /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12
-  /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/lib-dynload
-  /Users/Andy_1/Library/Python/3.12/lib/python/site-packages
-  /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages</msg>
 </errors>
 </robot>
